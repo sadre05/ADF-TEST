@@ -1,0 +1,111 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfalam"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage3_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase_linked_sink_password": {
+			"value": ""
+		},
+		"copylatestsinklinke_accountKey": {
+			"value": ""
+		},
+		"linekedwithSource_accountKey": {
+			"value": ""
+		},
+		"linkedService_toCountfile_accountKey": {
+			"value": ""
+		},
+		"linked_to_addColumn_accountKey": {
+			"value": ""
+		},
+		"linkedtosorcesinput_accountKey": {
+			"value": ""
+		},
+		"linkedwithsink_accountKey": {
+			"value": ""
+		},
+		"outputstorageaccountsinklink_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://sourcemdsa.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://sourcemdsa.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage3_properties_typeProperties_url": {
+			"value": "https://sourcemdsa.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "alam.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "alam"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "alam"
+		},
+		"AzureSqlDatabase_linked_sink_properties_typeProperties_server": {
+			"value": "alam.database.windows.net"
+		},
+		"AzureSqlDatabase_linked_sink_properties_typeProperties_database": {
+			"value": "alam"
+		},
+		"AzureSqlDatabase_linked_sink_properties_typeProperties_userName": {
+			"value": "alam"
+		},
+		"HttpServer1_properties_typeProperties_url": {
+			"value": "https://github.com/kjhealy/apple/blob/master/data/apple-all-products-quarterly-sales.csv"
+		},
+		"HttpServer2_zip_link_properties_typeProperties_url": {
+			"value": "https://github.com/mohankrishna02/pyspark-transformations.git"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"value": "https://reqres.in/api/users"
+		},
+		"RestService2_properties_typeProperties_url": {
+			"value": "https://reqres.in/api/users"
+		},
+		"copylatestsinklinke_properties_typeProperties_url": {
+			"value": "https://sinkmdsa.dfs.core.windows.net/"
+		},
+		"linekedwithSource_properties_typeProperties_url": {
+			"value": "https://sourcemdsa.dfs.core.windows.net/"
+		},
+		"linkedService_toCountfile_properties_typeProperties_url": {
+			"value": "https://sourcetoday.dfs.core.windows.net/"
+		},
+		"linked_to_addColumn_properties_typeProperties_url": {
+			"value": "https://sourcetoday.dfs.core.windows.net/"
+		},
+		"linkedtosorcesinput_properties_typeProperties_url": {
+			"value": "https://sourcetoday.dfs.core.windows.net/"
+		},
+		"linkedwithsink_properties_typeProperties_url": {
+			"value": "https://sourcemdsa.dfs.core.windows.net/"
+		},
+		"outputstorageaccountsinklink_properties_typeProperties_url": {
+			"value": "https://sinkmdsa.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

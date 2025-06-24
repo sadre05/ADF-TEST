@@ -1,0 +1,366 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfalam"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage2'"
+		},
+		"AzureDataLakeStorage3_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage3'"
+		},
+		"AzureSqlDatabase1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
+		},
+		"AzureSqlDatabase_linked_sink_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabase_linked_sink'"
+		},
+		"copylatestsinklinke_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'copylatestsinklinke'"
+		},
+		"linekedwithSource_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'linekedwithSource'"
+		},
+		"linkedService_toCountfile_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'linkedService_toCountfile'"
+		},
+		"linked_to_addColumn_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'linked_to_addColumn'"
+		},
+		"linkedtosorcesinput_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'linkedtosorcesinput'"
+		},
+		"linkedwithsink_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'linkedwithsink'"
+		},
+		"outputstorageaccountsinklink_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'outputstorageaccountsinklink'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sourcemdsa.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sourcemdsa.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage3_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sourcemdsa.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "alam.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "alam"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "alam"
+		},
+		"AzureSqlDatabase_linked_sink_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "alam.database.windows.net"
+		},
+		"AzureSqlDatabase_linked_sink_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "alam"
+		},
+		"AzureSqlDatabase_linked_sink_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "alam"
+		},
+		"HttpServer1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://github.com/kjhealy/apple/blob/master/data/apple-all-products-quarterly-sales.csv"
+		},
+		"HttpServer2_zip_link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://github.com/mohankrishna02/pyspark-transformations.git"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://reqres.in/api/users"
+		},
+		"RestService2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://reqres.in/api/users"
+		},
+		"copylatestsinklinke_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sinkmdsa.dfs.core.windows.net/"
+		},
+		"linekedwithSource_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sourcemdsa.dfs.core.windows.net/"
+		},
+		"linkedService_toCountfile_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sourcetoday.dfs.core.windows.net/"
+		},
+		"linked_to_addColumn_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sourcetoday.dfs.core.windows.net/"
+		},
+		"linkedtosorcesinput_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sourcetoday.dfs.core.windows.net/"
+		},
+		"linkedwithsink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sourcemdsa.dfs.core.windows.net/"
+		},
+		"outputstorageaccountsinklink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sinkmdsa.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfalam_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"AzureDataLakeStorage2_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage2_accountKey')]"
+					},
+					"AzureDataLakeStorage3_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage3_accountKey')]"
+					},
+					"AzureSqlDatabase1_password": {
+						"value": "[parameters('AzureSqlDatabase1_password')]"
+					},
+					"AzureSqlDatabase_linked_sink_password": {
+						"value": "[parameters('AzureSqlDatabase_linked_sink_password')]"
+					},
+					"copylatestsinklinke_accountKey": {
+						"value": "[parameters('copylatestsinklinke_accountKey')]"
+					},
+					"linekedwithSource_accountKey": {
+						"value": "[parameters('linekedwithSource_accountKey')]"
+					},
+					"linkedService_toCountfile_accountKey": {
+						"value": "[parameters('linkedService_toCountfile_accountKey')]"
+					},
+					"linked_to_addColumn_accountKey": {
+						"value": "[parameters('linked_to_addColumn_accountKey')]"
+					},
+					"linkedtosorcesinput_accountKey": {
+						"value": "[parameters('linkedtosorcesinput_accountKey')]"
+					},
+					"linkedwithsink_accountKey": {
+						"value": "[parameters('linkedwithsink_accountKey')]"
+					},
+					"outputstorageaccountsinklink_accountKey": {
+						"value": "[parameters('outputstorageaccountsinklink_accountKey')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage2_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage3_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage3_properties_typeProperties_url')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
+					},
+					"AzureSqlDatabase_linked_sink_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase_linked_sink_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase_linked_sink_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase_linked_sink_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase_linked_sink_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase_linked_sink_properties_typeProperties_userName')]"
+					},
+					"HttpServer1_properties_typeProperties_url": {
+						"value": "[parameters('HttpServer1_properties_typeProperties_url')]"
+					},
+					"HttpServer2_zip_link_properties_typeProperties_url": {
+						"value": "[parameters('HttpServer2_zip_link_properties_typeProperties_url')]"
+					},
+					"RestService1_properties_typeProperties_url": {
+						"value": "[parameters('RestService1_properties_typeProperties_url')]"
+					},
+					"RestService2_properties_typeProperties_url": {
+						"value": "[parameters('RestService2_properties_typeProperties_url')]"
+					},
+					"copylatestsinklinke_properties_typeProperties_url": {
+						"value": "[parameters('copylatestsinklinke_properties_typeProperties_url')]"
+					},
+					"linekedwithSource_properties_typeProperties_url": {
+						"value": "[parameters('linekedwithSource_properties_typeProperties_url')]"
+					},
+					"linkedService_toCountfile_properties_typeProperties_url": {
+						"value": "[parameters('linkedService_toCountfile_properties_typeProperties_url')]"
+					},
+					"linked_to_addColumn_properties_typeProperties_url": {
+						"value": "[parameters('linked_to_addColumn_properties_typeProperties_url')]"
+					},
+					"linkedtosorcesinput_properties_typeProperties_url": {
+						"value": "[parameters('linkedtosorcesinput_properties_typeProperties_url')]"
+					},
+					"linkedwithsink_properties_typeProperties_url": {
+						"value": "[parameters('linkedwithsink_properties_typeProperties_url')]"
+					},
+					"outputstorageaccountsinklink_properties_typeProperties_url": {
+						"value": "[parameters('outputstorageaccountsinklink_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adfalam_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfalam_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "adfalam_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfalam_ArmTemplate_1')]"
+			]
+		},
+		{
+			"name": "adfalam_ArmTemplate_3",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_3.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfalam_ArmTemplate_2')]"
+			]
+		},
+		{
+			"name": "adfalam_ArmTemplate_4",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_4.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfalam_ArmTemplate_3')]"
+			]
+		},
+		{
+			"name": "adfalam_ArmTemplate_5",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_5.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfalam_ArmTemplate_4')]"
+			]
+		}
+	]
+}
