@@ -1,0 +1,32 @@
+{
+	"name": "pipeline27_check_weekday_or_not",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "var1",
+					"value": {
+						"value": "@string(contains('12345', string(dayOfWeek(utcNow()))))",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"var1": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-06-22T17:54:18Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

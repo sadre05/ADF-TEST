@@ -1,0 +1,9 @@
+{
+	"name": "adfalam",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "255a1478-26d9-4cc3-8bd7-5f3c88236f18",
+		"tenantId": "16b3c013-d300-468d-ac64-7eda0820b6d3"
+	}
+}

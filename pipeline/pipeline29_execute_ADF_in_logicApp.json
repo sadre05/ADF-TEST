@@ -1,0 +1,27 @@
+{
+	"name": "pipeline29_execute_ADF_in_logicApp",
+	"properties": {
+		"activities": [
+			{
+				"name": "Wait1",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": {
+						"value": "@pipeline().parameters.waitTimeInSeconds",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"waitTimeInSeconds": {
+				"type": "int"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-06-23T05:48:07Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,32 @@
+{
+	"name": "pipeline26_round_decimal_number",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "roundNumber",
+					"value": {
+						"value": "@string(div(float(split(string(mul(123.4567, 100)),'.')[0]), 100))\n",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"roundNumber": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-06-22T17:36:25Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

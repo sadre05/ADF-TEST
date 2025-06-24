@@ -1,0 +1,23 @@
+{
+	"name": "pipeline9_logExtraction",
+	"properties": {
+		"activities": [
+			{
+				"name": "Wait1",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [
+					{
+						"name": "LogFile"
+					}
+				],
+				"typeProperties": {
+					"waitTimeInSeconds": 0
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-06-19T08:09:15Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
