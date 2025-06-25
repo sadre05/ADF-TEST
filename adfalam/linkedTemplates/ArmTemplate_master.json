@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage3'"
 		},
+		"AzureDataLakeStorage4_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage4'"
+		},
 		"AzureSqlDatabase1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
@@ -64,6 +68,10 @@
 			"defaultValue": "https://sourcemdsa.dfs.core.windows.net/"
 		},
 		"AzureDataLakeStorage3_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sourcemdsa.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage4_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://sourcemdsa.dfs.core.windows.net/"
 		},
@@ -171,6 +179,9 @@
 					"AzureDataLakeStorage3_accountKey": {
 						"value": "[parameters('AzureDataLakeStorage3_accountKey')]"
 					},
+					"AzureDataLakeStorage4_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage4_accountKey')]"
+					},
 					"AzureSqlDatabase1_password": {
 						"value": "[parameters('AzureSqlDatabase1_password')]"
 					},
@@ -192,12 +203,6 @@
 					"linkedtosorcesinput_accountKey": {
 						"value": "[parameters('linkedtosorcesinput_accountKey')]"
 					},
-					"linkedwithsink_accountKey": {
-						"value": "[parameters('linkedwithsink_accountKey')]"
-					},
-					"outputstorageaccountsinklink_accountKey": {
-						"value": "[parameters('outputstorageaccountsinklink_accountKey')]"
-					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
@@ -206,6 +211,9 @@
 					},
 					"AzureDataLakeStorage3_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage3_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage4_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage4_properties_typeProperties_url')]"
 					},
 					"AzureSqlDatabase1_properties_typeProperties_server": {
 						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
@@ -251,12 +259,6 @@
 					},
 					"linkedtosorcesinput_properties_typeProperties_url": {
 						"value": "[parameters('linkedtosorcesinput_properties_typeProperties_url')]"
-					},
-					"linkedwithsink_properties_typeProperties_url": {
-						"value": "[parameters('linkedwithsink_properties_typeProperties_url')]"
-					},
-					"outputstorageaccountsinklink_properties_typeProperties_url": {
-						"value": "[parameters('outputstorageaccountsinklink_properties_typeProperties_url')]"
 					}
 				}
 			},
@@ -275,6 +277,18 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"linkedwithsink_accountKey": {
+						"value": "[parameters('linkedwithsink_accountKey')]"
+					},
+					"outputstorageaccountsinklink_accountKey": {
+						"value": "[parameters('outputstorageaccountsinklink_accountKey')]"
+					},
+					"linkedwithsink_properties_typeProperties_url": {
+						"value": "[parameters('linkedwithsink_properties_typeProperties_url')]"
+					},
+					"outputstorageaccountsinklink_properties_typeProperties_url": {
+						"value": "[parameters('outputstorageaccountsinklink_properties_typeProperties_url')]"
 					}
 				}
 			},

@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage3'"
 		},
+		"AzureDataLakeStorage4_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage4'"
+		},
 		"AzureSqlDatabase1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
@@ -47,14 +51,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'linkedtosorcesinput'"
 		},
-		"linkedwithsink_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'linkedwithsink'"
-		},
-		"outputstorageaccountsinklink_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'outputstorageaccountsinklink'"
-		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://sourcemdsa.dfs.core.windows.net/"
@@ -64,6 +60,10 @@
 			"defaultValue": "https://sourcemdsa.dfs.core.windows.net/"
 		},
 		"AzureDataLakeStorage3_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sourcemdsa.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage4_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://sourcemdsa.dfs.core.windows.net/"
 		},
@@ -126,14 +126,6 @@
 		"linkedtosorcesinput_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://sourcetoday.dfs.core.windows.net/"
-		},
-		"linkedwithsink_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://sourcemdsa.dfs.core.windows.net/"
-		},
-		"outputstorageaccountsinklink_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://sinkmdsa.dfs.core.windows.net/"
 		}
 	},
 	"variables": {
@@ -247,6 +239,29 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/pipeline34_git_CICD')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 1
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/pipeline9_logExtraction')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -320,6 +335,23 @@
 					"accountKey": {
 						"type": "SecureString",
 						"value": "[parameters('AzureDataLakeStorage3_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage4')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('AzureDataLakeStorage4_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureDataLakeStorage4_accountKey')]"
 					}
 				}
 			},
@@ -509,40 +541,6 @@
 					"accountKey": {
 						"type": "SecureString",
 						"value": "[parameters('linkedtosorcesinput_accountKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/linkedwithsink')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('linkedwithsink_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('linkedwithsink_accountKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/outputstorageaccountsinklink')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('outputstorageaccountsinklink_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('outputstorageaccountsinklink_accountKey')]"
 					}
 				}
 			},
