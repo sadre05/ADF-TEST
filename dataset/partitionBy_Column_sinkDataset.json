@@ -1,0 +1,23 @@
+{
+	"name": "partitionBy_Column_sinkDataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedwithsink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "emps",
+				"fileSystem": "sink"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
