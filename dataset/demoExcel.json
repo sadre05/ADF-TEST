@@ -1,0 +1,29 @@
+{
+	"name": "demoExcel",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linekedwithSource",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sheetIndex": {
+				"type": "int"
+			}
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "demoExcel.xlsx",
+				"fileSystem": "inputdata"
+			},
+			"sheetIndex": {
+				"value": "@dataset().sheetIndex",
+				"type": "Expression"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": []
+	}
+}
