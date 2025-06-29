@@ -1,0 +1,17 @@
+{
+	"name": "pipelinne40_demoPL_to_execute_onePipeline_from_anotherPL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Wait1",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 100
+				}
+			}
+		],
+		"annotations": []
+	}
+}
