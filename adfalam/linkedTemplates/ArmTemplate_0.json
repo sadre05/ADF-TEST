@@ -47,10 +47,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'linked_to_addColumn'"
 		},
-		"linkedtosorcesinput_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'linkedtosorcesinput'"
-		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://sourcemdsa.dfs.core.windows.net/"
@@ -120,10 +116,6 @@
 			"defaultValue": "https://sourcetoday.dfs.core.windows.net/"
 		},
 		"linked_to_addColumn_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://sourcetoday.dfs.core.windows.net/"
-		},
-		"linkedtosorcesinput_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://sourcetoday.dfs.core.windows.net/"
 		}
@@ -286,6 +278,29 @@
 				},
 				"annotations": [],
 				"lastPublishTime": "2025-06-19T08:09:15Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipelinne40_demoPL_to_execute_onePipeline_from_anotherPL')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 100
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
 			},
 			"dependsOn": []
 		},
@@ -524,23 +539,6 @@
 					"accountKey": {
 						"type": "SecureString",
 						"value": "[parameters('linked_to_addColumn_accountKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/linkedtosorcesinput')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('linkedtosorcesinput_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('linkedtosorcesinput_accountKey')]"
 					}
 				}
 			},

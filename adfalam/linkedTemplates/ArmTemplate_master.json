@@ -200,9 +200,6 @@
 					"linked_to_addColumn_accountKey": {
 						"value": "[parameters('linked_to_addColumn_accountKey')]"
 					},
-					"linkedtosorcesinput_accountKey": {
-						"value": "[parameters('linkedtosorcesinput_accountKey')]"
-					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
@@ -256,9 +253,6 @@
 					},
 					"linked_to_addColumn_properties_typeProperties_url": {
 						"value": "[parameters('linked_to_addColumn_properties_typeProperties_url')]"
-					},
-					"linkedtosorcesinput_properties_typeProperties_url": {
-						"value": "[parameters('linkedtosorcesinput_properties_typeProperties_url')]"
 					}
 				}
 			},
@@ -278,11 +272,17 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"linkedtosorcesinput_accountKey": {
+						"value": "[parameters('linkedtosorcesinput_accountKey')]"
+					},
 					"linkedwithsink_accountKey": {
 						"value": "[parameters('linkedwithsink_accountKey')]"
 					},
 					"outputstorageaccountsinklink_accountKey": {
 						"value": "[parameters('outputstorageaccountsinklink_accountKey')]"
+					},
+					"linkedtosorcesinput_properties_typeProperties_url": {
+						"value": "[parameters('linkedtosorcesinput_properties_typeProperties_url')]"
 					},
 					"linkedwithsink_properties_typeProperties_url": {
 						"value": "[parameters('linkedwithsink_properties_typeProperties_url')]"
@@ -374,6 +374,26 @@
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'adfalam_ArmTemplate_4')]"
+			]
+		},
+		{
+			"name": "adfalam_ArmTemplate_6",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_6.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfalam_ArmTemplate_5')]"
 			]
 		}
 	]

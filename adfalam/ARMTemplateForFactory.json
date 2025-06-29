@@ -3166,6 +3166,29 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/pipelinne40_demoPL_to_execute_onePipeline_from_anotherPL')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 100
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureSqlTable1')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -6412,6 +6435,18 @@
 				"[concat(variables('factoryId'), '/datasets/forinputdataset')]",
 				"[concat(variables('factoryId'), '/datasets/DelimitedText4')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline18')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
 		}
 	]
 }
