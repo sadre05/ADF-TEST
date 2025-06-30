@@ -43,10 +43,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'linkedService_toCountfile'"
 		},
-		"linked_to_addColumn_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'linked_to_addColumn'"
-		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://sourcemdsa.dfs.core.windows.net/"
@@ -112,10 +108,6 @@
 			"defaultValue": "https://sourcemdsa.dfs.core.windows.net/"
 		},
 		"linkedService_toCountfile_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://sourcetoday.dfs.core.windows.net/"
-		},
-		"linked_to_addColumn_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://sourcetoday.dfs.core.windows.net/"
 		}
@@ -248,6 +240,115 @@
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline40_run_activity_if_any_activity_fail')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Set variable1",
+						"description": "",
+						"type": "SetVariable",
+						"dependsOn": [],
+						"policy": {
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "temp",
+							"value": {
+								"value": "@int('1')",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [
+							{
+								"activity": "Set variable2",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "Set variable1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "Set variable3",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 1
+						}
+					},
+					{
+						"name": "Set variable2",
+						"type": "SetVariable",
+						"dependsOn": [],
+						"policy": {
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "temp",
+							"value": "dsfds"
+						}
+					},
+					{
+						"name": "Set variable3",
+						"type": "SetVariable",
+						"dependsOn": [],
+						"policy": {
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "temp",
+							"value": "sjfa"
+						}
+					},
+					{
+						"name": "send error message",
+						"type": "Wait",
+						"dependsOn": [
+							{
+								"activity": "Wait1",
+								"dependencyConditions": [
+									"Skipped"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 1
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"variables": {
+					"temp": {
+						"type": "String"
+					}
 				},
 				"annotations": []
 			},
@@ -522,23 +623,6 @@
 					"accountKey": {
 						"type": "SecureString",
 						"value": "[parameters('linkedService_toCountfile_accountKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/linked_to_addColumn')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('linked_to_addColumn_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('linked_to_addColumn_accountKey')]"
 					}
 				}
 			},

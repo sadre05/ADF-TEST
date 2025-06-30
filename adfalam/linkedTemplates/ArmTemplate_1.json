@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adfalam"
 		},
+		"linked_to_addColumn_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'linked_to_addColumn'"
+		},
 		"linkedtosorcesinput_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'linkedtosorcesinput'"
@@ -18,6 +22,10 @@
 		"outputstorageaccountsinklink_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'outputstorageaccountsinklink'"
+		},
+		"linked_to_addColumn_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sourcetoday.dfs.core.windows.net/"
 		},
 		"linkedtosorcesinput_properties_typeProperties_url": {
 			"type": "string",
@@ -36,6 +44,23 @@
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/linked_to_addColumn')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('linked_to_addColumn_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('linked_to_addColumn_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/linkedtosorcesinput')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -84,18 +109,6 @@
 						"value": "[parameters('outputstorageaccountsinklink_accountKey')]"
 					}
 				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pipeline18')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"annotations": []
 			},
 			"dependsOn": []
 		},

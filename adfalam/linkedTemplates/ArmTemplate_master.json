@@ -197,9 +197,6 @@
 					"linkedService_toCountfile_accountKey": {
 						"value": "[parameters('linkedService_toCountfile_accountKey')]"
 					},
-					"linked_to_addColumn_accountKey": {
-						"value": "[parameters('linked_to_addColumn_accountKey')]"
-					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
@@ -250,9 +247,6 @@
 					},
 					"linkedService_toCountfile_properties_typeProperties_url": {
 						"value": "[parameters('linkedService_toCountfile_properties_typeProperties_url')]"
-					},
-					"linked_to_addColumn_properties_typeProperties_url": {
-						"value": "[parameters('linked_to_addColumn_properties_typeProperties_url')]"
 					}
 				}
 			},
@@ -272,6 +266,9 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"linked_to_addColumn_accountKey": {
+						"value": "[parameters('linked_to_addColumn_accountKey')]"
+					},
 					"linkedtosorcesinput_accountKey": {
 						"value": "[parameters('linkedtosorcesinput_accountKey')]"
 					},
@@ -280,6 +277,9 @@
 					},
 					"outputstorageaccountsinklink_accountKey": {
 						"value": "[parameters('outputstorageaccountsinklink_accountKey')]"
+					},
+					"linked_to_addColumn_properties_typeProperties_url": {
+						"value": "[parameters('linked_to_addColumn_properties_typeProperties_url')]"
 					},
 					"linkedtosorcesinput_properties_typeProperties_url": {
 						"value": "[parameters('linkedtosorcesinput_properties_typeProperties_url')]"
