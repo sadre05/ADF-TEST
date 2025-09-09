@@ -1,0 +1,17 @@
+{
+	"name": "repro",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-4113326084523207.7.azuredatabricks.net",
+			"authentication": "MSI",
+			"workspaceResourceId": "/subscriptions/db4cd804-dae2-47cb-b719-ceacabd07e84/resourceGroups/testrg/providers/Microsoft.Databricks/workspaces/reprodata",
+			"newClusterNodeType": "Standard_DS3_v2",
+			"newClusterNumOfWorker": "2",
+			"newClusterVersion": "10.4.x-scala2.12",
+			"clusterOption": "Fixed",
+			"newClusterInitScripts": []
+		}
+	}
+}
