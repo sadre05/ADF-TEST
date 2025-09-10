@@ -1,0 +1,13 @@
+{
+	"name": "AzureDatabricks1",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-4192086777804429.9.azuredatabricks.net",
+			"authentication": "MSI",
+			"workspaceResourceId": "/subscriptions/db4cd804-dae2-47cb-b719-ceacabd07e84/resourceGroups/testrg/providers/Microsoft.Databricks/workspaces/tuktuk",
+			"existingClusterId": "0910-182248-43gx5pqe"
+		}
+	}
+}
